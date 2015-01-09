@@ -1,0 +1,30 @@
+{
+  "name": "array-comprehensions",
+  "version": "0.0.0",
+  "description": "Array comprehensions",
+  "main": "forOf.js",
+  "scripts": {
+    "test": "mocha --compilers js:mocha-traceur"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/stoeffel/array-comprehensions"
+  },
+  "keywords": [
+    "array",
+    "list",
+    "comprehensions"
+  ],
+  "author": "stoeffel",
+  "license": "MIT",
+  "bugs": {
+    "url": "http://github.com/stoeffel/array-comprehensions/issues"
+  },
+  "homepage": "http://github.com/stoeffel/array-comprehensions",
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^2.1.0",
+    "mocha-traceur": "^2.1.0"
+  },
+  "dependencies": {}
+}
