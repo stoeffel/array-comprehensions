@@ -4,23 +4,25 @@ function wrap(fn) {
   };
 }
 
-module.exports = function forOf(iterable, fnConditionOrIterable, fn) {
+function inAndOut(x) {
+  return x;
+}
+
+module.exports = function forOf(iterable, fnCondIter, fn) {
 
   var filtered;
   var sec;
   var condition;
 
-  if (fn && typeof fnConditionOrIterable === 'function') {
-    condition = fnConditionOrIterable;
-  } else if (typeof fnConditionOrIterable === 'object') {
-    sec = fnConditionOrIterable;
+  if (fn && typeof fnCondIter === 'function') {
+    condition = fnCondIter;
+  } else if (typeof fnCondIter === 'object') {
+    sec = fnCondIter;
   } else {
-    fn = fnConditionOrIterable;
+    fn = fnCondIter;
   }
 
-  fn = fn || function(x) {
-    return x;
-  };
+  fn = fn || inAndOut;
 
   if (condition) {
     return iterable.filter(wrap(condition)).map(wrap(fn));
