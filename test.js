@@ -16,8 +16,8 @@ describe('for(iterable, condition, do)', () => {
 
 describe('for(iterable, iterable, do)', () => {
   it('should call do for each item and the correspondant item of the sec list', () => {
-    expect(forOf([1,2,3], [1,2,3], (x,y) => { return x*y; })).to.eql([1,4,9]);
-    expect(forOf([1,2,3], [1,2,3,4], (x,y) => { return x*y; })).to.eql([1,4,9]);
-    expect(forOf([1,2], [1,2,3], (x,y) => { return x*y; })).to.eql([1,4]);
+    expect(forOf([1,2,3], [3,2,1], (x,y) => { return x*y; })).to.eql([3, 2, 1, 6, 4, 2, 9, 6, 3]);
+    expect(forOf([1,2,3], [4,3,2,1], (x,y) => { return x*y; })).to.eql([4, 3, 2, 1, 8, 6, 4, 2, 12, 9, 6, 3]);
+    expect(forOf([1,2], [3,2,1], (x,y) => { return x*y; })).to.eql([3, 2, 1, 6, 4, 2]);
   });
 });

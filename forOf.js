@@ -10,6 +10,7 @@ function inAndOut(x) {
 
 module.exports = function forOf(iterable, fnCondIter, fn) {
 
+  var result = [];
   var filtered;
   var sec;
   var condition;
@@ -25,14 +26,17 @@ module.exports = function forOf(iterable, fnCondIter, fn) {
   fn = fn || inAndOut;
 
   if (condition) {
-    return iterable.filter(wrap(condition)).map(wrap(fn));
+    result = iterable.filter(wrap(condition)).map(wrap(fn));
   } else {
-    return iterable.map(function(x, i) {
+    iterable.forEach(function(x, i) {
       if (sec) {
-        return fn(x, sec[i]);
+        sec.forEach(function(y) {
+          result.push(fn(x, y));
+        });
       } else {
-        return fn(x);
+        result.push(fn(x));
       }
     });
   }
+  return result;
 };

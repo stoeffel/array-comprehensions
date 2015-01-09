@@ -31,8 +31,13 @@ function isGreatherThan1(x) {
   return x>1
 }
 
+// [for (x of [1,2,3]) inc(x)]
 forOf([1, 2, 3], inc); // => [2, 3, 4]
-forOf([1, 2, 3], [3, 2, 1], mul); // => [3, 4, 3]
+
+// [for (x of [1,2,3]) for (y of [3,2,1]) mul(x,y)]
+forOf([1, 2, 3], [3, 2, 1], mul); // => [3, 2, 1, 6, 4, 2, 9, 6, 3]
+
+// [for (x of [1,2,3]) if (isGreatherThan1(x)) sqr(x)]
 forOf([1, 2, 3], isGreatherThan1, sqr); // => [4, 9]
 ```
 
