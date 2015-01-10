@@ -8,35 +8,54 @@ function inAndOut(x) {
   return x;
 }
 
-module.exports = function forOf(iterable, fnCondIter, fn) {
+function isFunction(fn) {
+  return typeof fn === 'function';
+}
+
+function isCondition(fn, fnCondIter) {
+  return fn && isFunction(fnCondIter);
+}
+
+function isObject(obj) {
+  return typeof obj === 'object';
+}
+
+function forOfIf(iterable, condition, fn) {
+  return iterable
+            .filter(wrap(condition))
+            .map(wrap(fn));
+}
+
+function forOf(iterable, secondIterable, fn) {
 
   var result = [];
-  var filtered;
-  var sec;
-  var condition;
 
-  if (fn && typeof fnCondIter === 'function') {
-    condition = fnCondIter;
-  } else if (typeof fnCondIter === 'object') {
-    sec = fnCondIter;
+  if (secondIterable) {
+    iterable.forEach(function(x, i) {
+      secondIterable.forEach(function(y) {
+        result.push(fn(x, y));
+      });
+    });
   } else {
-    fn = fnCondIter;
+    result = iterable.map(wrap(fn));
   }
+  
+  return result;
+}
+
+module.exports = function(iterable, fnCondIter, fn) {
+
+  var condition = isCondition(fn, fnCondIter)? fnCondIter : null;
+  var secondIterable;
 
   fn = fn || inAndOut;
 
   if (condition) {
-    result = iterable.filter(wrap(condition)).map(wrap(fn));
+    return forOfIf(iterable, condition, fn);
   } else {
-    iterable.forEach(function(x, i) {
-      if (sec) {
-        sec.forEach(function(y) {
-          result.push(fn(x, y));
-        });
-      } else {
-        result.push(fn(x));
-      }
-    });
+    fn = isFunction(fnCondIter)? fnCondIter : fn;
+    secondIterable = isObject(fnCondIter)? fnCondIter : null;
+
+    return forOf(iterable, secondIterable, fn);
   }
-  return result;
 };
