@@ -21,5 +21,6 @@ describe('for(iterable, iterable, do)', () => {
     expect(forOf([1,2,3], [3,2,1], (x,y) => x*y)).to.eql([3, 2, 1, 6, 4, 2, 9, 6, 3]);
     expect(forOf([1,2,3], [4,3,2,1], (x,y) => x*y)).to.eql([4, 3, 2, 1, 8, 6, 4, 2, 12, 9, 6, 3]);
     expect(forOf([1,2], [3,2,1], (x,y) => x*y)).to.eql([3, 2, 1, 6, 4, 2]);
+    expect(forOf([1,2], forOf([5,4,3,2,1], x => x < 4, x => x), (x,y) => x*y)).to.eql([3, 2, 1, 6, 4, 2]);
   });
 });
