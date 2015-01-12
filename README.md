@@ -1,4 +1,4 @@
-array-comprehensions (WIP)
+array-comprehensions
 ====================
 
 [![Build Status](https://travis-ci.org/stoeffel/array-comprehensions.svg)](https://travis-ci.org/stoeffel/array-comprehensions) [![npm version](https://badge.fury.io/js/array-comprehensions.svg)](http://badge.fury.io/js/array-comprehensions)

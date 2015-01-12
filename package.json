@@ -1,6 +1,6 @@
 {
   "name": "array-comprehensions",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Array comprehensions",
   "main": "forOf.js",
   "scripts": {
