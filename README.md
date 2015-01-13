@@ -46,9 +46,9 @@ API
 
 ### forOf
 
-#### `forOf(iterable, do)`
+#### `forOf(array, do)`
 
-Execute the function `do` for each item of `iterable`.
+Execute the function `do` for each item of `array`.
 
 ```js
 forOf([1, 2, 3], function(x){
@@ -56,9 +56,9 @@ forOf([1, 2, 3], function(x){
 }); // => [2, 3, 4]
 ```
 
-#### `forOf(iterable, condition, do)`
+#### `forOf(array, condition, do)`
 
-Execute the function `do` for each item of `iterable` that fullfills the `condition`.
+Execute the function `do` for each item of `array` that fullfills the `condition`.
 
 ```js
 forOf([1, 2, 3, 4], function(x) {
@@ -68,9 +68,9 @@ forOf([1, 2, 3, 4], function(x) {
 }); // => [4,16]
 ```
 
-#### `forOf(iterable1, iterable2, do)`
+#### `forOf(array1, array2, do)`
 
-Execute the function `do` for each item of `iterable1` with every item of `iterable2`.
+Execute the function `do` for each item of `array1` with every item of `array2`.
 
 ```js
 forOf([1, 2], [1,2], function(x, y) {
